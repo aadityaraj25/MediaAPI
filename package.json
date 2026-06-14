@@ -1,0 +1,25 @@
+{
+  "name": "repob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aadityaraj25/repoB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aadityaraj25/repoB/issues"
+  },
+  "homepage": "https://github.com/aadityaraj25/repoB#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
