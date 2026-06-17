@@ -12,7 +12,7 @@ const generateRefreshAndAccessToken = async(userId) => {
         const accessToken = user.generateAccessToken()
         const refreshToken = user.generateRefreshToken()
 
-        user.refreshToken = refreshTokeno
+        user.refreshToken = refreshToken
         await user.save({ validateBeforeSave:false })
 
         return {accessToken, refreshToken}
@@ -102,7 +102,7 @@ const registerUser = asyncHandler(async(req,res)=>{
 
 })
 
-const loginUser = asyncHandler((req,res)=>{
+const loginUser = asyncHandler( async(req,res)=>{
     // req.body ->data
     // check for empty fields
     // username or email and password
@@ -110,17 +110,17 @@ const loginUser = asyncHandler((req,res)=>{
     // validate from the database
     // access and refresh token generation
     // send cookie
-    const {email,username,password} = req,body
-    if(!username){
-        throw new ApiError(400,"Username is required")
+    const {email,username,password} = req.body
+    if(!(username || email)){
+        throw new ApiError(400,"Username or Email is required")
     }
 
     // if used either username or email then
-    // const user = await User.findOne({
-    //     $or: [{username},{email}]
-    // })
+    const user = await User.findOne({
+        $or: [{username},{email}]
+    })
 
-    const user = await User.findOne({username})
+    // const user = await User.findOne({username})
     if(!user){
         throw new ApiError(404, "User does not Exist")
     }
@@ -177,8 +177,8 @@ const logoutUser = asyncHandler( async(req,res) => {
 
     return res
              .status(200)
-             .cookie("accessToken",options)
-             .cookie("refreshToken",options)
+             .clearcookie("accessToken",options)
+             .clearcookie("refreshToken",options)
              .json(new ApiResponse(200,{},"User logged out Successfully"))
 })
 
