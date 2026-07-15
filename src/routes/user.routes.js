@@ -2,7 +2,6 @@ import { Router } from "express"
 import { changeUserPassword, getCurrentUser, getUserChannelProfile, getWatchHistory, loginUser, logoutUser, refreshAccessToken, registerUser, updateAccountDetails, updateAvatar, updateCoverImage } from "../controllers/user.controllers.js"
 import { upload } from '../middlewares/multer.middleware.js'
 import { VerifyJWT } from '../middlewares/auth.middleware.js'
-import { verify } from "jsonwebtoken"
 
 const router = Router()
 
