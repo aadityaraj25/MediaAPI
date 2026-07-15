@@ -30,7 +30,7 @@ app.use((err,req,res,next)=>{
 import userRouter from "./routes/user.routes.js"
 
 // routes declaration
-app.use("/api/v1",(req,res)=>{
+app.get("/api/v1",(req,res)=>{
     res.status(200).json({
         success: true,
         message: "repoB is a Node.js backend application providing user registration, authentication (JWT-based), profile management (including avatar/cover image uploads via Cloudinary), and data storage using MongoDB/Mongoose. It features secure authentication with access/refresh tokens, protected routes, and a global error handler. To get started, install Node.js and MongoDB, set up Cloudinary, install dependencies via `npm install`, configure environment variables in a `.env` file, and run the server using `npm run dev`.",
